@@ -1,6 +1,6 @@
-Text based snake and ladder game using python.
+# Text based snake and ladder game using python.
 
-Introduction:
+**Introduction:**
 Snakes and Ladders, known originally as Moksha Patam, is an ancient
 Indian board game for two or more players regarded today as a worldwide
 classic.It is played on a game board with numbered, gridded squares. A
@@ -12,7 +12,7 @@ by falling down snakes.
 The game is a simple race based on sheer luck, and it is popular with
 young children.
 
-Concepts required:
+**Concepts required:**
 a python program to play text based snake and ladder game in terminal.
 Few basic concepts used in this code are:
 - Dictionary
@@ -23,10 +23,10 @@ Few basic concepts used in this code are:
 - Conditional Statements i.e. IF and ELSE
 - Getting input from user
 
-Python Libraries Used:
-● time
-● Random
-● Sys
+**Python Libraries Used:**
+ 1. time
+ 2. Random
+ 3. Sys
 
-Technologies Used:
-● Python 3.8
+**Technologies Used:**
+ 1. Python 3.8
