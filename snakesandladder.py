@@ -42,8 +42,8 @@ class snakes_and_ladder():
 
     def __init__(self):
         pass
-
-    def welcome_msg():
+    
+    def welcome_msg(self):
         msg = """
                Welcome to Snake and Ladder Game.
 
@@ -61,7 +61,7 @@ class snakes_and_ladder():
 
        
 
-    def get_player_names():
+    def get_player_names(self):
         player1_name = None
         while not player1_name:
             player1_name = input("Please enter a valid name for first player: ").strip()
@@ -73,24 +73,24 @@ class snakes_and_ladder():
         return player1_name, player2_name
 
 
-    def get_dice_value():
+    def get_dice_value(self):
         time.sleep(SLEEP_BETWEEN_ACTIONS)
         dice_value = random.randint(1, DICE_FACE)
         print("Its a " + str(dice_value))
         return dice_value
 
-
-    def got_snake_bite(old_value, current_value, player_name):
+    @classmethod
+    def got_snake_bite(cls,old_value, current_value, player_name):
         print("\n" + random.choice(snake_bite).upper() + " ~~~~~~~~>")
         print("\n" + player_name + " got a snake bite. Down from " + str(old_value) + " to " + str(current_value))
 
-
-    def got_ladder_jump(old_value, current_value, player_name):
+    @classmethod
+    def got_ladder_jump(cls,old_value, current_value, player_name):
         print("\n" + random.choice(ladder_jump).upper() + " ########")
         print("\n" + player_name + " climbed the ladder from " + str(old_value) + " to " + str(current_value))
 
 
-    def snake_ladder(player_name, current_value, dice_value):
+    def snake_ladder(self,player_name, current_value, dice_value):
         time.sleep(SLEEP_BETWEEN_ACTIONS)
         old_value = current_value
         current_value = current_value + dice_value
@@ -113,7 +113,7 @@ class snakes_and_ladder():
         return final_value
 
 
-    def check_win(player_name, position):
+    def check_win(self,player_name, position):
         time.sleep(SLEEP_BETWEEN_ACTIONS)
         if MAX_VAL == position:
             print("\n\n\nThats it.\n\n" + player_name + " won the game.")
@@ -121,11 +121,13 @@ class snakes_and_ladder():
             print("\nThank you for playing the game.")
             sys.exit(1)
 
-    
-def start():
-    snakes_and_ladder.welcome_msg()
+
+
+if __name__ == "__main__":
+    s1=snakes_and_ladder()
+    s1.welcome_msg()
     time.sleep(SLEEP_BETWEEN_ACTIONS)
-    player1_name, player2_name =snakes_and_ladder.get_player_names()
+    player1_name, player2_name =s1.get_player_names()
     time.sleep(SLEEP_BETWEEN_ACTIONS)
 
     player1_current_position = 0
@@ -134,24 +136,20 @@ def start():
         time.sleep(SLEEP_BETWEEN_ACTIONS)
         input_1 = input("\n" + player1_name + ": " + random.choice(player_turn_text) + " Hit the enter to roll dice: ")
         print("\nRolling dice...")
-        dice_value = snakes_and_ladder.get_dice_value()
+        dice_value = s1.get_dice_value()
         time.sleep(SLEEP_BETWEEN_ACTIONS)
         print(player1_name + " moving....")
-        player1_current_position = snakes_and_ladder.snake_ladder(player1_name, player1_current_position, dice_value)
+        player1_current_position = s1.snake_ladder(player1_name, player1_current_position, dice_value)
 
-        snakes_and_ladder.check_win(player1_name, player1_current_position)
+        s1.check_win(player1_name, player1_current_position)
 
         input_2 = input("\n" + player2_name + ": " + random.choice(player_turn_text) + " Hit the enter to roll dice: ")
         print("\nRolling dice...")
-        dice_value = snakes_and_ladder.get_dice_value()
+        dice_value = s1.get_dice_value()
         time.sleep(SLEEP_BETWEEN_ACTIONS)
         print(player2_name + " moving....")
-        player2_current_position = snakes_and_ladder.snake_ladder(player2_name, player2_current_position, dice_value)
+        player2_current_position = s1.snake_ladder(player2_name, player2_current_position, dice_value)
 
-        snakes_and_ladder.check_win(player2_name, player2_current_position)
-
-
-if __name__ == "__main__":
-    start()
+        s1.check_win(player2_name, player2_current_position)
     
 
